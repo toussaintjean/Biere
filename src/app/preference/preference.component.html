@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="preference.component.css">
+	</head>
+	<body>
+    <form action ="traitement.php" method ="post/get">
+        <p>
+          Remplissez ce formulaire:<br>
+          Nom:
+      
+            <input type="text" name="prenom">
+        </p>
+   
+       <p>
+       Prénom:
+     
+            <input type="text" name="Nom">
+      </p>
+              
+            <p>
+              Nom de la sociétée:
+             <input type="text" name="Nom de ma sociétée"> <br>
+            </p>
+      
+      <select name="requete">
+            <option value= "Prendre contacte">Prendre contacte</option>
+            <option value= "embaucher moi">embaucher moi</option>
+            <option value="j'ai besoin d'un stagiaire">j'ai besoin d'un stagiaire<option>      
+         </select> 
+      
+         
+        
+    <label>Votre message:</label><br>
+         <textarea></textarea> <br>
+      
+    </form>
+    
+    <section>
+    </section>
+    
+         <form>
+           <label for="Quelle est votre CB?">
+              Quelle est votre CB?
+           </label>
+           <input type="text" list="cartes" name="cartes">
+              <datalist id="cartes">
+                     <option value= "GOLD">Gold</option>
+                    <option value= "Master card">Master card</option>
+                    <option value= "Visa classique">Visa classique</option>
+           </datalist>
+    </form>
+		
+	</body>
