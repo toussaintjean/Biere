@@ -1,0 +1,26 @@
+<div class=" mt-4 text-center"> 
+    <h2 class="title-perso">Bienvenue</h2>
+    <br>
+    <form >
+    <div style="margin:auto; width:40%;">
+        <div>
+            <div class="card p-4 z-depth-5">
+                <div class="md-form">
+                    <label for="">Mail</label>
+                    <input id='login' type="text" #login class="form-control">
+                </div>
+                <div class="md-form">
+                    <label  for="">Password</label>
+                    <input id='mdp' type="text" #password class="form-control">
+                      
+                </div>
+                <button class="btn btn-secondary btn-sm btn-block" (click) = 'goProfile(login.value, password.value)'>Connexion</button>
+                <br>
+                <p>Vous n'avez pas de compte et souhaitez vous inscrire?</p>
+                <button type="submit" class ="btn btn-secondary btn-sm btn-block" (click) = 'goToInscription()' >S'inscrire</button>
+                <p class="text-danger text-center" id="msg_err"> {{message}}</p>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

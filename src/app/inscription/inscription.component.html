@@ -25,40 +25,43 @@
   rel="stylesheet"
 />
 <link rel="stylesheet" type="text/css" href="inscription.component.css">
-
-
 </head>
+    
 	<body >
+        <app-barnav></app-barnav>
         <h1 class="text-center font-weight">Inscription</h1>
-    <form action ="traitement.php" method ="post/get">
+        <br>
+        <div class="alert alert-success" role="alert" *ngIf="message != ''">
+            <p style="text-align:center">{{message}}</p></div>
+
+        <br>
+        <br>
+        <form #user="ngForm" (ngSubmit) = "inscription(user.value)">
         <div class="md-form">
-        
-          
             <label for="">Nom</label>
-            <input name="Nom" id="Nom" type="text" class="form-control">
+            <input name="nom" id="Nom" type="text" #nom class="form-control" ngModel="">
         
         </div>
    
        <div class="md-form">
         <label for="">Prenom</label>
-        <input name="Prenom" id="Prenom" type="text" class="form-control">
+        <input name="prenom" id="Prenom" type="text" #prenom class="form-control" ngModel="">
         </div >
               
             <div class="md-form">
             
             <label for="">Adresse mail</label>
-        <input name="Mail" id="Mail" type="text" class="form-control">
+        <input name="mail" id="Mail" type="text" #mail class="form-control" ngModel ="">
         </div>
         <div class="md-form">
             <label for="">Mot de passe</label>
-        <input name="Mdp" id="Mdp" type="text" class="form-control"> 
+        <input name="password" id="Mdp" type="text" #password class="form-control" ngModel = ""> 
         </div>
         <div class="text-center">
-            <button class="btn btn-primary btm-sm btn-bloc" (click)="inscription()">Confirmation</button>
-    <p class="text-danger text-center" id="msg_err"></p>
+            <button class="btn btn-primary btm-sm btn-bloc" type = submit>Confirmation</button>
         </div>
         
-    </form>
+        </form>
     
     
 

@@ -1,44 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<nav class="navbar navbar-dark bg-warning">
+  <a class="navbar-brand" href="#">Menu</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink ="/recherche">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink ="/preference">Mes préférences</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="#">Mes groupes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="#">Déconnexion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</head>
-<body >
-<ul class="nav red lighten-2 py-4 mb-4 font-weight-bold z-depth-1 nav-fill w-100">
-<li class="nav-item">
-<a class="nav-link active white-text" href="preference/">Mes préferences</a>
-</li>
-<li class="nav-item">
-<a class="nav-link white-text" href="groupe/">Mes groupes</a>
-</li>
-<li class="nav-item">
-<a class="nav-link white-text" href="recherche/">Recherche</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link white-text" href="connexion/">Deconexion</a>
-  </li>
-</ul>
-</body>
-</html>
+<div class="container mt-4 text-center"> 
+  <h2 class="title-perso">Bienvenue sur votre page personnelle !</h2>
+</div>

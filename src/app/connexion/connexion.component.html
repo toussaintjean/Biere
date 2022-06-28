@@ -1,78 +1,28 @@
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
-  rel="stylesheet"
-/>
-</head>
-
-
-
-<div class="text-center" >
-    
-    <h1 class="text-info " >Bienvenue</h1>
-
+<div class=" mt-4 text-center"> 
+  <h2 class="title-perso">Bienvenue</h2>
+  <br>
+  <form >
+  <div style="margin:auto; width:40%;">
+      <div>
+          <div class="card p-4 z-depth-5">
+              <div class="md-form">
+                  <label for="">Mail</label>
+                  <input id='login' type="text" #login class="form-control">
+              </div>
+              <div class="md-form">
+                  <label  for="">Password</label>
+                  <input id='mdp' type="text" #password class="form-control">
+                    
+              </div>
+              <button class="btn btn-secondary btn-sm btn-block" (click) = 'goToHomeB(login.value, password.value)'>Connexion</button>
+              <br>
+              <p>Vous n'avez pas de compte et souhaitez vous inscrire?</p>
+              <button type="button" class ="btn btn-secondary btn-sm btn-block">S'inscrire</button>
+              <p class="text-danger text-center" id="msg_err"> {{message}}</p>
+          </div>
+      </div>
+  </div>
+  </form>
 </div>
-<div style="margin:auto; width:40%; ">
-
-    <div class="">
-    
-    
-    <div class="md-form">
-    <label for="">Login</label>
-    <input name="login" id="login" type="text" class="form-control">
-    </div>
-    <div class="md-form">
-    <label for="">Password</label>
-    <input name="password" id="password" type="text" class="form-control">
-    </div>
-    
-    <button class="btn btn-primary btm-sm btn-bloc" onclick="connexion()">Connexion</button>
-    <p class="text-danger text-center" id="msg_err"></p>
-    <a href="http://localhost:4200/inscription">
-        <button class="btn btn-primary btm-sm btn-bloc">inscription</button>
-     </a>
-
-
-
-    </div>
-    </div>
 
