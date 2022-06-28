@@ -22,12 +22,13 @@ export class ConnexionbisComponent implements OnInit {
       this.user = data;
       console.log("User", this.user);
       let obj = this.user;
-      this.id_user= Object.values(obj)[0]
+      //this.id_user= Object.values(obj)[0]
       if (this.user!= null){
         this.route.navigateByUrl('recherche')
       } else {
-        //this.route.navigateByUrl('connexionbis');
+        this.route.navigateByUrl('connexionbis');
         this.message = "Login ou Mot de Passe incorrect(s)..." 
+        console.log(this.message)
       }
     }, err => {
       console.log(err);
