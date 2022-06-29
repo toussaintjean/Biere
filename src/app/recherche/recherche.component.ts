@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class RechercheComponent implements OnInit {
 
   constructor() { }
-
+   f="ggg";
+   
   ngOnInit(): void {
   }
 

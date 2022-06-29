@@ -1,57 +1,121 @@
-<!DOCTYPE html>
+<app-barnav></app-barnav>
 
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="preference.component.css">
-	</head>
-     <app-barnav></app-barnav>
-	<body>
-    <form action ="traitement.php" method ="post/get">
-        <p>
-          Remplissez ce formulaire:<br>
-          Nom:
-      
-            <input type="text" name="prenom">
-        </p>
-   
-       <p>
-       Prénom:
-     
-            <input type="text" name="Nom">
-      </p>
-              
-            <p>
-              Nom de la sociétée:
-             <input type="text" name="Nom de ma sociétée"> <br>
-            </p>
-      
-      <select name="requete">
-            <option value= "Prendre contacte">Prendre contacte</option>
-            <option value= "embaucher moi">embaucher moi</option>
-            <option value="j'ai besoin d'un stagiaire">j'ai besoin d'un stagiaire<option>      
-         </select> 
-      
-         
-        
-    <label>Votre message:</label><br>
-         <textarea></textarea> <br>
-      
-    </form>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Grid Template · Bootstrap v4.6</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/grid/">
+
     
-    <section>
-    </section>
+
+    <!-- Bootstrap core CSS -->
+<link href="view-source:https://getbootstrap.com/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
     
-         <form>
-           <label for="Quelle est votre CB?">
-              Quelle est votre CB?
-           </label>
-           <input type="text" list="cartes" name="cartes">
+    <!-- Custom styles for this template -->
+    <link href="preference.component.css" rel="stylesheet">
+  </head>
+  <body class="py-4">
+    
+<div class="container">
+  <div>Choissisez un type de biére :</div>
+  <input type="text" list="cartes" #type name="type">
               <datalist id="cartes">
-                     <option value= "GOLD">Gold</option>
-                    <option value= "Master card">Master card</option>
-                    <option value= "Visa classique">Visa classique</option>
+                     <option value= "Type">Blonde</option>
+                    <option value= "Prix">Blanche</option>
+                    <option value= "Taux d'alcool">Ambre</option>
+                    <option value= "Quartier">15 eme</option>
            </datalist>
-    </form>
-		
-	</body>
+  
+  <br>
+  <div>Choissisez prix préferentiel :</div>
+  <input type="text" #prix  name="prix" >
+              
+  
+  <br>
+  <div>Choissisez un taux d'alcool :</div>
+  <input type="text" #taux name="taux">
+              
+  
+
+  <br>
+  <div>Choissisez votre biere préferé :</div>
+  <input type="text" #biere name="biere">
+              
+  
+  <br>
+  <br>
+  <button class="btn btn-primary btm-sm btn-bloc" (click)="Majpref(prix.value,type.value,taux.value,biere.value)">Sauvegarder</button>
+  <br>
+  <br>
+  <div class="row ">
+    <div class="col-2 themed-grid-col"></div>
+    <div class="col-1 themed-grid-col">.col-4</div>
+    <div class="col-4 themed-grid-col">.col-4</div>
+    <div class="col-1 themed-grid-col">.col-4</div>
+    <div class="col-2 themed-grid-col">.col&-4</div>
+    <div class="col-2 themed-grid-col">.col-4</div>
+  </div>
+  <div class="row ">
+    <div class="col-2 themed-grid-col">.col-4</div>
+    <div class="col-1 themed-grid-col">.col-4</div>
+    <div class="col-4 themed-grid-col">.col-4</div>
+    <div class="col-1 themed-grid-col">.col-4</div>
+    <div class="col-2 themed-grid-col">.col-4</div>
+    <div class="col-2 themed-grid-col">.col-4</div>
+  </div>
+  <div class="row ">
+    <div class="col-2 themed-grid-col">.col-4</div>
+    <div class="col-1 themed-grid-col">.col-4</div>
+    <div class="col-4 themed-grid-col">.col-4</div>
+    <div class="col-1 themed-grid-col">.col-4</div>
+    <div class="col-2 themed-grid-col">.col-4</div>
+    <div class="col-2 themed-grid-col">.col-4</div>
+  </div>
+
+</div>
+
+
+
+
+
+
+    
+  </body>
+</html>

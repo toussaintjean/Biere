@@ -10,6 +10,9 @@ export class PreferenceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+  Majpref(prix:String , type: String,taux:String, biere:String): void {
 
+  }
 }
