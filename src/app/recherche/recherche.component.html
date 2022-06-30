@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,16 +11,22 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/grid/">
 
   <!-- Bootstrap core CSS -->
-  <link href="view-source:https://getbootstrap.com/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link href="view-source:https://getbootstrap.com/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
   <!-- Favicons -->
-  <link rel="apple-touch-icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-  <link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon"
+    href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-32x32.png"
+    sizes="32x32" type="image/png">
+  <link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon-16x16.png"
+    sizes="16x16" type="image/png">
   <link rel="manifest" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/manifest.json">
-  <link rel="mask-icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+  <link rel="mask-icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/safari-pinned-tab.svg"
+    color="#563d7c">
   <link rel="icon" href="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/favicon.ico">
-  <meta name="msapplication-config" content="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/browserconfig.xml">
+  <meta name="msapplication-config"
+    content="view-source:https://getbootstrap.com/docs/4.6/assets/img/favicons/browserconfig.xml">
   <meta name="theme-color" content="#563d7c">
 
   <style>
@@ -41,54 +48,100 @@
 </head>
 
 <app-barnav></app-barnav>
-<body class="py-4">
-  
-  
-    
-<div class="container" style="text-align: center;">
-  <h5>Filtrer les bars par:</h5>
-  <br>
-  <select class="form-control" id="Filtre">
-    <option>Votre préférence</option>
-    <option>Nom d'une bière</option>
-    <option>Localisation</option>
-    <option>Prix maximum</option>
-    <option>Style de bière</option>
-  </select>
-  
-  <br>
-  <br>
 
-  <div>Choissisez un code postale :</div>
-  <input type="text"  name="codepost">
-              
+<body class="py-4">
+
   <br>
-  <br>
-  
-  <div class="row mb-3">
-    <div class="col-2 themed-grid-col">{{f}}</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-4 themed-grid-col">.col-4</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-2 themed-grid-col">.col&-4</div>
-    <div class="col-2 themed-grid-col">.col-4</div>
+  <form name="formId">
+    <div class="container" style="text-align: center;">
+      <div class="row">
+        <div class="col-sm-4" style="text-align:left">
+          <h5>Filtrer les bars par:</h5>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-4">
+          <select class="custom-select mr-sm-2" id="selectedFilter" name="selectedFilter" (change)="getOption()">
+            <option value="" selected>Selectionner le filtre choisi</option>
+            <option value="1">Votre préférence</option>
+            <option value="2">Nom d'une bière</option>
+            <option value="3">Localisation</option>
+            <option value="4">Prix maximum</option>
+            <option value="5">Style de bière</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <form class="form-inline">
+          <div *ngIf="selectFilter == 2">
+            <input class="form-control" #selectBiere type="text" id="selectNomBiere" name="selectNomBiere"
+              placeholder="Veuillez entrer le nom de bière...">
+              <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMap(selectBiere.value)" style="width: 55%;"
+            >Filtrer</button>
+          </div>
+        </form>
+
+          <select *ngIf="selectFilter == 3" class="custom-select mr-sm-2" id="selectLoc" name="selectLoc" #selectLoc
+            (change)="updateMap(selectLoc.value)">
+            <option *ngFor="let arr of arrondissements" value="{{arr}}">{{arr}}</option>
+          </select>
+
+          <select *ngIf="selectFilter == 4" class="custom-select mr-sm-2" id="selectPrix" name="selectPrix" #selectPrix
+            (change)="updateMap(selectPrix.value)">
+            <option *ngFor="let prix of prixBieres" value="{{prix}}">{{prix}}</option>
+          </select>
+
+          <div *ngIf="selectFilter == 5">
+            <input class="form-control" #selectStyle type="text" id="selectStyle"
+              name="selectStyle" placeholder="Veuillez entrer le style de bière...">
+              <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMap(selectStyle.value)" style="width: 55%;"
+            >Filtrer</button>
+          </div>
+
+        </div>
+
+        <!-- <div *ngIf="selectFilter == 2" class="col-sm-3">
+          <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMap(selectBiere.value)" style="width: 55%;"
+            >Filtrer</button>
+        </div>
+        <div *ngIf="selectFilter == 5" class="col-sm-3">
+          <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMap(selectStyle.value)" style="width: 55%;"
+            >Filtrer</button>
+        </div> -->
+
+      </div>
+      <br>
+      <br>
+      <div *ngIf="selectFilter==1" class="row mb-4 align-self-center" style="text-align:center ;">
+        <div class="col-2 themed-grid-col">{{f}}</div>
+        <div class="col-2 themed-grid-col">.col-4</div>
+        <div class="col-2 themed-grid-col">.col-4</div>
+        <div class="col-2 themed-grid-col">.col-4</div>
+        <div class="col-2 themed-grid-col">.col&-4</div>
+      </div>
+    </div>
+
+
+  </form>
+
+
+  <div class="container" style="text-align: center;">
+    <google-map height="500px" width="100%" [center]="center" [zoom]=13>
+      <map-marker #markerElem="mapMarker" *ngFor="let m of markers" [position]="m.position" #m
+        (mapClick)="openInfo(markerElem, m.title, m.labelContent)">
+      </map-marker>
+      <map-info-window #infoWindow="mapInfoWindow">
+        <h6>{{NomBar}}</h6>
+        <br>
+        <p>{{DescriptionBar2}}</p>
+      </map-info-window>
+    </google-map>
   </div>
 
-  <google-map height="500px" width="100%" [center] = "center" [zoom]=13>
-    <map-marker #markerElem = "mapMarker" *ngFor="let m of markers" [position]="m.position" #m (mapClick) = "openInfo(markerElem, m.title, m.labelContent)">
-    </map-marker>
-    <map-info-window #infoWindow="mapInfoWindow">
-      <h6>{{NomBar}}</h6>
-      <br>
-      <p>{{DescriptionBar2}}</p>
-    </map-info-window>
-  </google-map>
-
-</div>
 
 
 
 
-    
 </body>
+
 </html>
