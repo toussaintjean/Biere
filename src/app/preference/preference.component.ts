@@ -59,15 +59,16 @@ export class PreferenceComponent implements OnInit {
 
     })
     this.http.get("http://localhost:8086/preference/maxId").subscribe(data=>{
+      console.log("data",data)
       this.user.pref=data;
     },
     error => {console.log(error)})
-
+    this.loggerService.setUserSession(this.user);
     this.http.put("http://localhost:8086/user/update/"+this.loggerService.getUserConnect().id_user,this.user).subscribe({
       next: (data) => {console.log("modif user",data)},
       error: (err) => {console.log(err)}
   })
-  this.loggerService.setUserSession(this.user);
+  
   
     }
   }
