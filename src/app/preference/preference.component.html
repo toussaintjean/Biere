@@ -54,60 +54,51 @@
   <body class="py-4">
     
 <div class="container">
-  <div>Choissisez un type de biére :</div>
-  <input type="text" list="cartes" #type name="type">
+  <form #pref="ngForm">
+  <div class=" md-form">Choissisez un type de biére :
+  <input type="text" list="cartes" #type name="nomStype" ngModel="">
               <datalist id="cartes">
-                     <option value= "Type">Blonde</option>
-                    <option value= "Prix">Blanche</option>
-                    <option value= "Taux d'alcool">Ambre</option>
-                    <option value= "Quartier">15 eme</option>
+                    <!-- <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>-->
+
            </datalist>
+  </div>
   
-  <br>
-  <div>Choissisez prix préferentiel :</div>
-  <input type="text" #prix  name="prix" >
-              
+  <div class=" md-form">Choissisez prix préferentiel :
+  <input type="text" #prix  name="prix" ngModel="" >
+</div>
   
-  <br>
-  <div>Choissisez un taux d'alcool :</div>
-  <input type="text" #taux name="taux">
-              
+  
+  <div class=" md-form ">Choissisez un taux d'alcool :
+  <input type="text" #taux name="tauxAlcool" ngModel="">
+              </div>
   
 
-  <br>
-  <div>Choissisez votre biere préferé :</div>
-  <input type="text" #biere name="biere">
-              
+  
+  <div class=" md-form ">Choissisez votre biere préferé :
+  <input type="text" #biere name="nomBiere" ngModel="">
+              </div>
   
   <br>
   <br>
-  <button class="btn btn-primary btm-sm btn-bloc" (click)="Majpref(prix.value,type.value,taux.value,biere.value)">Sauvegarder</button>
+  <button class="btn btn-warning btm-sm btn-bloc "  (click)="Majpref(pref.value)">Sauvegarder</button>
+</form>
   <br>
   <br>
   <div class="row ">
-    <div class="col-2 themed-grid-col"></div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-4 themed-grid-col">.col-4</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-2 themed-grid-col">.col&-4</div>
-    <div class="col-2 themed-grid-col">.col-4</div>
+    <div class="col-3 themed-grid-col">Type de biére</div>
+    <div class="col-3 themed-grid-col">Taux d'alcool</div>
+    <div class="col-3 themed-grid-col">Prix préferentiel</div>
+    <div class="col-3 themed-grid-col">Biére préferé</div>
+ 
   </div>
   <div class="row ">
-    <div class="col-2 themed-grid-col">.col-4</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-4 themed-grid-col">.col-4</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-2 themed-grid-col">.col-4</div>
-    <div class="col-2 themed-grid-col">.col-4</div>
+    <div class="col-3 themed-grid-col" *ngIf="preferenceType != null">{{preferenceType}}</div>
+    <div class="col-3 themed-grid-col" *ngIf="preferencetaux != null">{{preferencetaux}}</div>
+    <div class="col-3 themed-grid-col" *ngIf="preferencep != null">{{preferencep}}</div>
+    <div class="col-3 themed-grid-col" *ngIf="preferenceb != null">{{preferenceb}}</div>
+
   </div>
-  <div class="row ">
-    <div class="col-2 themed-grid-col">.col-4</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-4 themed-grid-col">.col-4</div>
-    <div class="col-1 themed-grid-col">.col-4</div>
-    <div class="col-2 themed-grid-col">.col-4</div>
-    <div class="col-2 themed-grid-col">.col-4</div>
-  </div>
+
 
 </div>
 

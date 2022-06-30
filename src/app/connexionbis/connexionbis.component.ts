@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   selector: 'app-connexionbis',
@@ -12,7 +13,7 @@ export class ConnexionbisComponent implements OnInit {
   user:object = {};
   message:string="";
   id_user:number = 0;
-  constructor(private route: Router, private http: HttpClient) { }
+  constructor(private route: Router, private http: HttpClient, private loggerService:LoggerService) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,7 @@ export class ConnexionbisComponent implements OnInit {
       //this.id_user= Object.values(obj)[0]
       if (this.user!= null){
         this.route.navigateByUrl('recherche')
+        this.loggerService.setUserSession(this.user);
       } else {
         this.route.navigateByUrl('connexionbis');
         this.message = "Login ou Mot de Passe incorrect(s)..." 
