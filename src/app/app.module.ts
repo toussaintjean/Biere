@@ -13,6 +13,8 @@ import { ConnexionbisComponent } from './connexionbis/connexionbis.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestComponent } from './test/test.component';
 import { FormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

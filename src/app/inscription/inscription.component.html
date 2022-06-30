@@ -1,7 +1,4 @@
-
-
-		
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -27,41 +24,46 @@
 <link rel="stylesheet" type="text/css" href="inscription.component.css">
 </head>
     
-	<body >
-        <app-barnav></app-barnav>
-        <br>
-        <br>
-        <h1 class="text-center font-weight">Inscription</h1>
-        <br>
-        <div class="alert alert-success" role="alert" *ngIf="message != ''">
-            <p style="text-align:center">{{message}}</p></div>
+<body>
+  <br>
+  <br>
+  <h1 class="text-center font-weight">Inscription</h1>
+  <br>
 
-        <br>
-        <br>
-        <form #user="ngForm" (ngSubmit) = "inscription(user.value)">
-        <div class="md-form">
-            <label for="">Nom</label>
-            <input name="nom" id="Nom" type="text" #nom class="form-control" ngModel="">
-        
-        </div>
-   
-       <div class="md-form">
+  <div class="alert alert-success" role="alert" *ngIf="message != ''">
+    <p style="text-align:center">{{message}}</p>
+  </div>
+
+  <br>
+  <br>
+  <div class="container">
+    <form style="background-color: white; padding: 3%; width: fit-content; border-radius: 2%;" #user="ngForm"
+      (ngSubmit)="inscription(user.value)">
+      <div class="md-form">
+        <label for="">Nom</label>
+        <input name="nom" id="Nom" type="text" #nom class="form-control" ngModel="">
+
+      </div>
+
+      <div class="md-form">
         <label for="">Prenom</label>
         <input name="prenom" id="Prenom" type="text" #prenom class="form-control" ngModel="">
-        </div >
-              
-            <div class="md-form">
-            
-            <label for="">Adresse mail</label>
-        <input name="mail" id="Mail" type="text" #mail class="form-control" ngModel ="">
-        </div>
-        <div class="md-form">
-            <label for="">Mot de passe</label>
-        <input name="password" id="Mdp" type="text" #password class="form-control" ngModel = ""> 
-        </div>
-        <div class="text-center">
-            <button class="btn btn-warning btm-sm btn-bloc" type = submit>Confirmation</button>
-        </div>
-        
-        </form>
-	</body>
+      </div>
+
+      <div class="md-form">
+
+        <label for="">Adresse mail</label>
+        <input name="mail" id="Mail" type="text" #mail class="form-control" ngModel="">
+      </div>
+      <div class="md-form">
+        <label for="">Mot de passe</label>
+        <input name="password" id="Mdp" type="text" #password class="form-control" ngModel="">
+      </div>
+      <div class="text-center">
+        <button class="btn btn-warning btm-sm btn-bloc" type=submit>Confirmation</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

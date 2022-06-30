@@ -20,8 +20,10 @@ export class InscriptionComponent implements OnInit {
     this.http.post("http://localhost:8086/user", user).subscribe({
       next: (data) => {
         console.log(data)
-        this.message = "User crée"
-        this.route.navigateByUrl('inscription')
+        this.message = "Vous êtes désormais inscrit ! <br/>Veuillez patientez, vous allez être redirigé vers la page de connexion dans 5 secondes..."
+        setTimeout(() => {
+          this.route.navigateByUrl('connexionbis')
+        }, 5000)
     },
     error: (err) => {console.log(err)}
   })
