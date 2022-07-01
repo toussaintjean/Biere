@@ -15,6 +15,7 @@ import { TestComponent } from './test/test.component';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
     HttpClientModule,
     FormsModule,
     GoogleMapsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
