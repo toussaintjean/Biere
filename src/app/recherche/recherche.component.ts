@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   selector: 'app-recherche',
@@ -29,7 +30,7 @@ export class RechercheComponent implements OnInit {
   debHappyH: string = "";
   finHappyH: string = "";
   siteWeb: string = "";
-
+  
   splitted_loc: Array<String> = [];
   center: google.maps.LatLngLiteral = ({ lat: 0, lng: 0 })
 
@@ -39,7 +40,11 @@ export class RechercheComponent implements OnInit {
   prixBieres = ['3', '5', '7', '10', '15']
   nbBarsFiltres:number = 0
 
-  constructor(private http: HttpClient) { }
+  preference:object = []
+
+  constructor(private http: HttpClient, private loggerService:LoggerService) {}
+  user = this.loggerService.getUserConnect();
+  
   NomBar = ''
   DescriptionBar = 'fezqgqe'
   DescriptionBar2 = '<h3>Locronan</h3>'
@@ -54,7 +59,7 @@ export class RechercheComponent implements OnInit {
         lng: 2.3522219,
       }
     })
-
+    
     this.http.get("http://localhost:8086/bars").subscribe(data => {
       this.bars = data;
       //console.log(this.bars);
@@ -99,6 +104,15 @@ export class RechercheComponent implements OnInit {
   getOption() {
     this.selectElement = document.querySelector("#selectedFilter")
     this.selectFilter = this.selectElement.options[this.selectElement.selectedIndex].value
+    if (this.selectFilter == 1){
+      this.http.get("http://localhost:8086/preferences/"+ this.user.pref).subscribe(data => {
+        this.preference = data
+        let pref = this.preference;
+         
+        //this.updateMapPref()
+      }, error => {console.log(error)})
+      
+    }
     console.log(this.selectFilter)
   }
 
@@ -180,6 +194,19 @@ export class RechercheComponent implements OnInit {
     })
   }
 
+  updateMapPref(nom:string, prix:string, style:string, taux:string,){
+    this.markers =[]
+    this.http.get("bar/pref/"+ nom + prix + style + taux).subscribe(data => {
+      this.bars = data;
+      console.log(this.bars);
+      let liste_bars = this.bars;
+      this.getLengthBar(liste_bars)
+      this.updateMapMarkers(liste_bars)
+    }, err => {
+      console.log(err);
+    })
+  }
+
   updateMapMarkers(liste: object){
     for (var i = 0; i < Object.keys(liste).length; i++) {
       this.nom = Object.values(liste)[i].nom;
@@ -206,6 +233,6 @@ export class RechercheComponent implements OnInit {
 
   // Pagination parameters.
   p: number = 1;
-  count: number = 3;
+  count: number = 4;
 
 }
