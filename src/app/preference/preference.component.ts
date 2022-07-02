@@ -17,7 +17,7 @@ export class PreferenceComponent implements OnInit {
   preferenceb : String ="";
   preferenceType : String ="";
   
-  
+  nomCategories: any =[]
   user : any = this.loggerService.getUserConnect();
   preftest: object ={};
   categories: object ={}
@@ -31,28 +31,36 @@ export class PreferenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if ( this.preference != null){
-      this.preferencep  = this.preference.prix;
-      this.preferencetaux  = this.preference.tauxAlcool;
-      this.preferenceb  = this.preference.nomBiere;
-      this.preferenceType  = this.preference.nomStype;
-    } else {
-      this.http.get('http://localhost:8086/users/' +this.loggerService.getUserConnect().id_user).subscribe(data => {
-      console.log("data", data);  
-      console.log("User1", this.loggerService.getUserConnect());
+    this.http.get('http://localhost:8086/users/' +this.loggerService.getUserConnect().id_user).subscribe(data => {
+
       this.user = data;
     this.loggerService.setUserSession(this.user);
       console.log("User2", this.loggerService.getUserConnect());
   })
+
+  this.http.get("http://localhost:8086/categories").subscribe(data => {
+    this.categories = data;
+    console.log(this.categories)
+    let categories = this.categories
+    for (var i = 0; i < Object.keys(categories).length; i++){
+      this.nomCategories.push(Object.values(categories)[i].nomCat);
+    }
+    console.log(this.nomCategories)
+    
+  }, err => {console.log(err)})
+    if ( this.preference != null){
+      this.http.get('http://localhost:8086/users/' +this.loggerService.getUserConnect().id_user).subscribe(data => {
+
+      this.user = data;
+    this.loggerService.setUserSession(this.user);
+      console.log("User3", this.loggerService.getUserConnect());
+      this.preferencep  = this.user.pref.prix;
+      this.preferencetaux  = this.user.pref.tauxAlcool;
+      this.preferenceb  = this.user.pref.nomBiere;
+      this.preferenceType  = this.user.pref.nomStype;
+  })
     }
 
-    
-  
-    this.http.get("http://localhost:8086/categories").subscribe(data => {
-      this.categories = data;
-      console.log(this.categories)
-      
-    }, err => {console.log(err)})
   }
 
   Majpref(pref : object): void {
@@ -64,11 +72,13 @@ export class PreferenceComponent implements OnInit {
         error: (err) => {console.log(err)}
         
     })
-    window.location.reload();
+    
     } else {
       this.http.post("http://localhost:8086/preference/"+this.loggerService.getUserConnect().id_user,pref).subscribe({
 
     })
+
+    }
     this.http.get('http://localhost:8086/users/' +this.loggerService.getUserConnect().id_user).subscribe(data => {
       console.log("data", data);  
       console.log("User1", this.loggerService.getUserConnect());
@@ -76,13 +86,7 @@ export class PreferenceComponent implements OnInit {
     this.loggerService.setUserSession(this.user);
       console.log("User2", this.loggerService.getUserConnect());
   })
-  
-    
-    
-    console.log("etat user",this.loggerService.getUserConnect())
     window.location.reload();
-  
-    }
     
   }
   
