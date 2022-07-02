@@ -68,7 +68,7 @@
             <option value="2">Nom d'une bière</option>
             <option value="3">Localisation</option>
             <option value="4">Prix maximum</option>
-            <option value="5">Style de bière</option>
+            <option value="5">Catégorie de bière</option>
           </select>
         </div>
 
@@ -94,13 +94,12 @@
             <option *ngFor="let prix of prixBieres" value="{{prix}}">{{prix}}</option>
           </select>
 
-          <div *ngIf="selectFilter == 5">
-            <input style= "margin-top: 5px;" class="form-control" #selectStyle type="text" id="selectStyle"
-              name="selectStyle" placeholder="Veuillez entrer le style de bière...">
-              <br>
-              <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMapStyle(selectStyle.value)" style="width: 55%;"
-            >Filtrer</button>
-          </div>
+          <select style= "margin-top: 5px;" *ngIf="selectFilter == 5" class="custom-select mr-sm-2" id="selectCat" name="selectCat" #selectCat
+            (change)="updateMapCat(selectCat.value)">
+            <option value="">Veuillez choisir une catégorie...</option>
+            <option *ngFor="let cat of nomCategories" value="{{cat}}">{{cat}}</option>
+          </select>
+          
 
         </div>
 
@@ -121,23 +120,15 @@
               </div>
             </div>
           </div>
-          <!-- <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMap(selectBiere.value)" style="width: 55%;"
-            >Filtrer</button> -->
         </div>
-        <!-- <div *ngIf="selectFilter == 5" class="col-sm-3">
-          <button class="btn btn-warning btm-sm btn-bloc" type ="submit" (click) = "updateMap(selectStyle.value)" style="width: 55%;"
-            >Filtrer</button>
-        </div> -->
-
       </div>
       <br>
       <br>
       <div *ngIf="selectFilter==1" class="row mb-4 align-self-center" style="text-align:center ;">
-        <div class="col-2 themed-grid-col">{{f}}</div>
-        <div class="col-2 themed-grid-col">.col-4</div>
-        <div class="col-2 themed-grid-col">.col-4</div>
-        <div class="col-2 themed-grid-col">.col-4</div>
-        <div class="col-2 themed-grid-col">.col&-4</div>
+        <div class="col-2 themed-grid-col">{{nomBierePref}}</div>
+        <div class="col-2 themed-grid-col">{{catPref}}</div>
+        <div class="col-2 themed-grid-col">{{prixPref}}</div>
+        <div class="col-2 themed-grid-col">{{tauxPref}}</div>
       </div>
     </div>
 
@@ -191,56 +182,12 @@
                      {{marker.labelContent}}
                     </p>
                   </div>
-                  <!-- <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-                    <div class="d-flex flex-row align-items-center mb-1">
-                      <h4 class="mb-1 me-1">$13.99</h4>
-                      <span class="text-danger"><s>$20.99</s></span>
-                    </div>
-                    <h6 class="text-success">Free shipping</h6>
-                    <div class="d-flex flex-column mt-4">
-                      <button class="btn btn-primary btn-sm" type="button">Details</button>
-                      <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                        Add to wishlist
-                      </button>
-                    </div>
-                  </div> -->
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- <h2 class="text-secondary text-center">{{ title }}!</h2>
-        <hr />
-       
-        <div>
-          <h4 class="text-info">Displaying employee data.</h4>
-          <div> </div>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Fullname</th>
-                <th>Phone no.</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Nationality</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let e of employeedata | paginate: { itemsPerPage: count, currentPage: p }">
-                <td>{{e.id}}</td>
-                <td>{{e.name}}</td>
-                <td>{{e.phoneno}}</td>
-                <td>{{e.email}}</td>
-                <td>{{e.gender}}</td>
-                <td>{{e.nationality}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
     
-    
-       
         <!--Including the pagination control.-->
         <div class="text-center">
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
@@ -248,110 +195,6 @@
       </div>
     </div>
     </div>
-    
-    <!-- <div  *ngFor = "let marker of markers | paginate: { itemsPerPage: count, currentPage: p }" class="row justify-content-center mb-3">
-      <div class="col-md-12 col-xl-10">
-        <div class="card shadow-0 border rounded-3">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                  <img src="https://img.freepik.com/photos-gratuite/gros-plan-barman-versant-biere_171337-13762.jpg?t=st=1656669598~exp=1656670198~hmac=57369715894d9e156fa6a28c8b0b57e19d02e006377107c88b5a3d9cfb754d37&w=1380"
-                    class="w-100" />
-                  <a href="#!">
-                    <div class="hover-overlay">
-                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-6 col-xl-6">
-                <h5 style="font-weight: bold;">{{marker.title}}</h5>
-                <div class="d-flex flex-row">
-                  <div class="text-danger mb-1 me-2">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                  <span>310</span>
-                </div>
-                <p class="text-truncate mb-4 mb-md-0">
-                 {{marker.labelContent}}
-                </p>
-              </div> -->
-              <!-- <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-                <div class="d-flex flex-row align-items-center mb-1">
-                  <h4 class="mb-1 me-1">$13.99</h4>
-                  <span class="text-danger"><s>$20.99</s></span>
-                </div>
-                <h6 class="text-success">Free shipping</h6>
-                <div class="d-flex flex-column mt-4">
-                  <button class="btn btn-primary btn-sm" type="button">Details</button>
-                  <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                    Add to wishlist
-                  </button>
-                </div>
-              </div> -->
-            <!-- </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- <h2 class="text-secondary text-center">{{ title }}!</h2>
-    <hr />
-   
-    <div>
-      <h4 class="text-info">Displaying employee data.</h4>
-      <div> </div>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Fullname</th>
-            <th>Phone no.</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Nationality</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let e of employeedata | paginate: { itemsPerPage: count, currentPage: p }">
-            <td>{{e.id}}</td>
-            <td>{{e.name}}</td>
-            <td>{{e.phoneno}}</td>
-            <td>{{e.email}}</td>
-            <td>{{e.gender}}</td>
-            <td>{{e.nationality}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
-
-
-   
-    <!--Including the pagination control.-->
-    <!-- <div class="text-right">
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div> -->
-  <!-- </div> -->
-
-  
-
-  <!-- <div class="container" style="text-align: center;">
-    <google-map height="500px" width="100%" [center]="center" [zoom]=13>
-      <map-marker #markerElem="mapMarker" *ngFor="let m of markers" [position]="m.position" #m
-        (mapClick)="openInfo(markerElem, m.title, m.labelContent)">
-      </map-marker>
-      <map-info-window #infoWindow="mapInfoWindow">
-        <h6>{{NomBar}}</h6>
-        <br>
-        <p>{{DescriptionBar}}</p>
-      </map-info-window>
-    </google-map>
-  </div> -->
-
- 
 
 
 
