@@ -16,7 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
+import { DropDownListAllModule
+ } from '@syncfusion/ej2-angular-dropdowns';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     InscriptionComponent,
     BarnavComponent,
     ConnexionbisComponent,
-    TestComponent
+    TestComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     GoogleMapsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    DropDownListAllModule
   ],
   providers: [],
   bootstrap: [AppComponent]
