@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { GestionuserComponent } from './gestionuser/gestionuser.component';
+import { GestiongroupeComponent } from './gestiongroupe/gestiongroupe.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     InscriptionComponent,
     BarnavComponent,
     ConnexionbisComponent,
-    TestComponent
+    TestComponent,
+    GestionuserComponent,
+    GestiongroupeComponent
   ],
   imports: [
     BrowserModule,
