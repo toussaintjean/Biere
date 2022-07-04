@@ -28,9 +28,17 @@ export class ConnexionbisComponent implements OnInit {
         this.route.navigateByUrl('recherche')
         this.loggerService.setUserSession(this.user);
       } else {
+        this.http.get('http://localhost:8086/admin/' + login + '/' + password).subscribe(data => {
+        this.user = data;
+        console.log("admin", this.user)
+        if (this.user!=null){
+          this.route.navigateByUrl("home")
+          this.loggerService.setUserSession(this.user);
+        } else {
         this.route.navigateByUrl('connexionbis');
         this.message = "Login ou Mot de Passe incorrect(s)..." 
-        console.log(this.message)
+        console.log(this.message)}
+      },err =>{console.log(err)})
       }
     }, err => {
       console.log(err);

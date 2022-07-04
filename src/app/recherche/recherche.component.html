@@ -69,6 +69,8 @@
             <option value="3">Localisation</option>
             <option value="4">Prix maximum</option>
             <option value="5">Catégorie de bière</option>
+            <option value="6">Effacer le filtre</option>
+            
           </select>
         </div>
 
@@ -126,10 +128,10 @@
       <br>
       <div *ngIf="selectFilter==1" >
       <div class="row ">
-        <div class="col-3 themed-grid-col">Catégorie de bière</div>
-        <div class="col-3 themed-grid-col">Taux d'alcool</div>
-        <div class="col-3 themed-grid-col">Prix préferentiel</div>
-        <div class="col-3 themed-grid-col">Bière préferé</div>
+        <div class="col-3 themed-grid-col" style="font-weight: bold;">Catégorie de bière</div>
+        <div class="col-3 themed-grid-col" style="font-weight: bold;">Taux d'alcool</div>
+        <div class="col-3 themed-grid-col" style="font-weight: bold;">Prix préferentiel</div>
+        <div class="col-3 themed-grid-col" style="font-weight: bold;">Bière préférée</div>
       </div>
       <div class="row " style="text-align:center ;">
         <div class="col-3 themed-grid-col">{{nomBierePref}}</div>

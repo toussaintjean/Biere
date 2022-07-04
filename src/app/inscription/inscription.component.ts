@@ -21,7 +21,8 @@ export class InscriptionComponent implements OnInit {
       next: (data) => {
         console.log(data)
        // SendMailInscription();
-        this.message = "Vous êtes désormais inscrit ! <br/>Veuillez patientez, vous allez être redirigé vers la page de connexion dans 5 secondes..."
+        this.message = "Vous êtes désormais inscrit !" +"\n"                                   
+        +"Veuillez patientez, vous allez être redirigé vers la page de connexion dans 5 secondes..."
         setTimeout(() => {
           this.route.navigateByUrl('connexionbis')
         }, 5000)
