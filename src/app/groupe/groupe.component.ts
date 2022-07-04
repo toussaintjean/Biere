@@ -9,25 +9,30 @@ import { LoggerService } from '../services/logger.service';
 })
 export class GroupeComponent implements OnInit { 
   user : any = this.loggerService.getUserConnect();  
-  groupe: any;
+  groupe: object  ={};
   constructor(private route: Router, private http: HttpClient, private loggerService:LoggerService) { 
   user:loggerService.getUserConnect();
   }
   
   ngOnInit(): void {
     this.groupe =this.http.get("http://localhost:8086/groupe/user/"+this.loggerService.getUserConnect().id_user).subscribe(data =>{
-    console.log("data", data);  
     this.groupe = data;
-    console.log("groupe", this.groupe);
+    console.log("init",this.groupe)
   });
   }
-  addUserToGroup(groupeUser : Object): void {
-    //this.groupe =this.http.get("http://localhost:8086/groupe/user/"+this.loggerService.getUserConnect().id_user)
+  addUserToGroup(groupeUser : any): void {
+    this.groupe =this.http.get("http://localhost:8086/groupe/user/"+this.loggerService.getUserConnect().id_user)
     //this.groupe=groupeUser;
-    if (this.groupe != null){
+    console.log("GroupeUSER", groupeUser);  
+    if (this.groupe === null){
       console.log("NULL");
-        
+      this.http.post("http://localhost:8086/groupe/save/"+this.loggerService.getUserConnect().id_user,groupeUser).subscribe(data =>{
+        console.log("dataG", data);  
+        this.groupe = data;
+        console.log("groupeG", this.groupe);  
+        });
     }
+    
     
      else {
       console.log("Pas NULL", groupeUser);
@@ -35,15 +40,18 @@ export class GroupeComponent implements OnInit {
       this.http.post("http://localhost:8086/groupe/save/"+this.loggerService.getUserConnect().id_user,groupeUser).subscribe(data =>{
       console.log("dataG", data);  
       this.groupe = data;
-      console.log("groupeG", this.groupe);  
+      console.log("groupeU", this.groupe);  
       });
-      this.http.put("http://localhost:8086/groupe/1/test",groupeUser).subscribe(data =>{
+      this.groupe =this.http.get("http://localhost:8086/groupe/user/"+this.loggerService.getUserConnect().id_user);
+      console.log("groupeP", this.groupe);  
+      console.log("groupetestU", "http://localhost:8086/groupe/"+this.groupe+"/"+groupeUser.mailUser);
+      this.http.put("http://localhost:8086/groupe/"+this.groupe+"/"+groupeUser.mailUser,null).subscribe(data =>{
       console.log("data", data);  
       this.groupe = data;
       console.log("groupe", this.groupe);
         
     })
   }
-  window.location.reload();
+  //window.location.reload();
     }
   }
