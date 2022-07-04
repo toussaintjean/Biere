@@ -21,16 +21,7 @@ import { DropDownListAllModule
  } from '@syncfusion/ej2-angular-dropdowns';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { NavAdminComponent } from './nav-admin/nav-admin.component';
-import { GestionavisComponent } from './gestionavis/gestionavis.component';
-import { CreationBiereComponent } from './creation-biere/creation-biere.component';
-import { CrationBarComponent } from './cration-bar/cration-bar.component';
-import { CrationuserComponent } from './crationuser/crationuser.component';
-import { CreationuserComponent } from './creationuser/creationuser.component';
-import { GestionbarComponent } from './gestionbar/gestionbar.component';
-import { GestionbiereComponent } from './gestionbiere/gestionbiere.component';
-import { GestiongroupeComponent } from './gestiongroupe/gestiongroupe.component';
-import { GestionuserComponent } from './gestionuser/gestionuser.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,16 +35,6 @@ import { GestionuserComponent } from './gestionuser/gestionuser.component';
     TestComponent,
     HomeComponent,
     FooterComponent,
-    NavAdminComponent,
-    GestionavisComponent,
-    CreationBiereComponent,
-    CrationBarComponent,
-    CrationuserComponent,
-    CreationuserComponent,
-    GestionbarComponent,
-    GestionbiereComponent,
-    GestiongroupeComponent,
-    GestionuserComponent
   ],
   imports: [
     BrowserModule,
