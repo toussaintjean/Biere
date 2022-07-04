@@ -132,7 +132,7 @@ export class RechercheComponent implements OnInit {
         this.tauxPref = Object.values(pref)[2];
         this.catPref = Object.values(pref)[4];
         console.log("bar pref", this.nomBierePref)
-        //this.updateMapPref(this.nomBarPref, this.prixPref, this.catPref, this.tauxPref)
+        this.updateMapPref(this.nomBierePref, this.prixPref, this.catPref, this.tauxPref)
       }, error => {console.log(error)})
       
     }
@@ -194,7 +194,7 @@ export class RechercheComponent implements OnInit {
 
   updateMapPref(nom:string, prix:string, categorie:string, taux:string,){
     this.markers =[]
-    this.http.get("bar/pref/"+ nom + prix + categorie + taux).subscribe(data => {
+    this.http.get("http://localhost:8086/bar/pref/"+ nom +'/' + prix +'/' + categorie + '/'+ taux).subscribe(data => {
       this.bars = data;
       console.log(this.bars);
       let liste_bars = this.bars;
