@@ -1,0 +1,78 @@
+<section class="hero-section">
+    <form style="padding: 3%; width: fit-content; border-radius: 2%;" #adminForm="ngForm"
+          (ngSubmit)="submit(adminForm)">
+          <div class="title" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;"> Mise à jour utilisateur ({{userId}}) </div>
+    
+          <div class="md-form">
+    
+            <label for="name">Nom</label>
+            <br>
+            <input 
+            type="text" 
+            id="nom"
+            [(ngModel)]="user.nom"
+            name="nom" 
+            #tempName="ngModel"
+            required
+            placeholder="Entrez un nom"
+            class="form-control">
+          </div>
+    
+          <div class="md-form">
+    
+            <label for="prenom">Prenom</label>
+            <br>
+            <input 
+            type="text" 
+            id="prenom"
+            [(ngModel)]="user.prenom"
+            name="prenom"
+            placeholder="Entrez un prenom"
+            #tempPrenom="ngModel"
+            class="form-control" 
+            required
+             >
+    
+          </div>
+    
+          <div class="md-form">
+            <label for="">Adresse mail</label>
+            <br>
+            <input
+            type="text" 
+            id="mail"
+            name="mail" 
+            #mail 
+            placeholder="Entrez un email"
+            class="form-control" 
+            [(ngModel)]="user.mail">
+    
+          </div>
+    
+          <div class="md-form">
+    
+            <label for="">Mot de passe</label>
+            <br>
+            <input 
+            name="password" 
+            id="password" 
+            type="password" 
+            #password 
+            class="form-control" 
+            [(ngModel)]="user.password"
+            placeholder="Entrez un mot de passe">
+    
+          </div>
+    
+          <div class="text-center">
+    
+            <button class="btn btn-warning btm-sm btn-bloc" type=submit>Confirmation</button>
+            <a class="btn btn-light btm-sm btn-bloc" href="/gestionuser">Retour</a>
+    
+          </div>
+    
+        </form>
+    
+    <p *ngIf="success"> {{messagesuccess}} </p>
+    <p *ngIf="error"> {{messageerror}}</p>
+    </section>

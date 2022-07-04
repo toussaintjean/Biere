@@ -3,6 +3,7 @@ import { SelectorListContext } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { Router } from '@angular/router';
 import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
 import { LoggerService } from '../services/logger.service';
 
@@ -17,6 +18,7 @@ export class RechercheComponent implements OnInit {
   f = "ggg";
   bars: object = [];
   markers: any = [];
+  allBars:any = [];
   marker = {
     position: { lat: 48.856614, lng: 2.3522219 },
   }
@@ -49,7 +51,7 @@ export class RechercheComponent implements OnInit {
   nomCategories: any =[];
   categories: object ={};
 
-  constructor(private http: HttpClient, private loggerService:LoggerService) {}
+  constructor(private http: HttpClient, private loggerService:LoggerService, private route:Router) {}
   user = this.loggerService.getUserConnect();
   
   NomBar = ''
@@ -92,11 +94,6 @@ export class RechercheComponent implements OnInit {
         this.siteWeb = Object.values(liste_bars)[i].siteWeb;
         this.localisation_str = Object.values(liste_bars)[i].localisation;
         this.splitted_loc = this.localisation_str.split(",", 2);
-        //this.markers.push(new google.maps.Marker({
-        //position: {lat: Number(this.splitted_loc[0]), lng: Number(this.splitted_loc[1])},
-        //label: {color: 'red', text: "Adresse : " + this.adresse + " Happy-Hour : " + this.debHappyH + " - " + this.finHappyH + " heures" +"\n" + "Site Web: " + this.siteWeb},
-        //title: "Son nom: <br>"+this.nom,
-        //}))
         this.markers.push(new MarkerWithLabel({
           position: { lat: Number(this.splitted_loc[0]), lng: Number(this.splitted_loc[1]) },
           labelContent: "Adresse : " + this.adresse + " Happy-Hour :" + this.debHappyH + " - " + this.finHappyH + " heures" + "\n" + "Site Web: " + this.siteWeb,
@@ -104,6 +101,7 @@ export class RechercheComponent implements OnInit {
         }))
         //console.log("site", this.siteWeb);
       }
+      this.allBars = this.markers
       //console.log(this.nom_bars);
       //console.log(this.localisation_bars_str);
       //console.log(this.markers)
@@ -121,7 +119,6 @@ export class RechercheComponent implements OnInit {
   getOption() {
     this.selectElement = document.querySelector("#selectedFilter")
     this.selectFilter = this.selectElement.options[this.selectElement.selectedIndex].value
-    console.log("coucou",this.user.pref.idPref)
     if (this.selectFilter == 1){
       this.http.get("http://localhost:8086/preferences/"+ this.user.pref.idPref).subscribe(data => {
         this.preference = data
@@ -133,10 +130,12 @@ export class RechercheComponent implements OnInit {
         this.catPref = Object.values(pref)[4];
         console.log("bar pref", this.nomBierePref)
         this.updateMapPref(this.nomBierePref, this.prixPref, this.catPref, this.tauxPref)
-      }, error => {console.log(error)})
-      
+      }, error => {console.log(error)})   
     }
-    console.log(this.selectFilter)
+    if (this.selectFilter == 6) {
+      this.updateMapEraseFilter()
+    }
+    
   }
 
 
@@ -205,6 +204,19 @@ export class RechercheComponent implements OnInit {
     })
   }
 
+  updateMapEraseFilter(){
+    this.markers =[]
+    this.http.get("http://localhost:8086/bars").subscribe(data => {
+      this.bars = data;
+      console.log(this.bars);
+      let liste_bars = this.bars;
+      this.getLengthBar(liste_bars)
+      this.updateMapMarkers(liste_bars)
+    }, err => {
+      console.log(err);
+    })
+  }
+
   updateMapMarkers(liste: object){
     for (var i = 0; i < Object.keys(liste).length; i++) {
       this.nom = Object.values(liste)[i].nom;
@@ -218,7 +230,7 @@ export class RechercheComponent implements OnInit {
       this.markers.push(new MarkerWithLabel({
         position: { lat: Number(this.splitted_loc[0]), lng: Number(this.splitted_loc[1]) },
         labelContent: "Adresse : " + this.adresse + " Happy-Hour :" + this.debHappyH + " - " + this.finHappyH + " heures" + "\n" + "Site Web: " + this.siteWeb,
-        title: 'Son nom: <br/>' + this.nom,
+        title: this.nom,
       }))
       console.log("site", this.siteWeb);
       console.log("site", this.markers);

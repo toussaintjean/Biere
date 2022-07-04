@@ -1,0 +1,33 @@
+<section class="hero-section">
+    <div class="table-scroll scrollbar">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">idBar</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Début du HH</th>
+          <th scope="col">Fin du HH</th>
+          <th scope="col">Site web du bar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor= "let uL of barList">
+          <th scope="row">{{uL.idBar}}</th>
+          <td>{{uL.nom}}</td>
+          <td>{{uL.adresse}}</td>
+          <td>{{uL.debHapp}}</td>
+          <td>{{uL.finHapp}}</td>
+          <td>{{uL.siteWeb}}</td>
+          <td>
+            <i class="fa fa-edit editStyle" routerLink="/editBar/{{uL.idBar}}"></i>
+            <i class="fa fa-times deleteStyle" (click)="DeleteBar(uL.idBar)"></i>
+          </td>
+        </tr>
+    
+    
+    
+      </tbody>
+    </table>
+    </div>
+    </section>

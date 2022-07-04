@@ -1,0 +1,18 @@
+.hero-section{
+
+    background-color: whitesmoke;
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+    padding-top: 15%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.scrollbar {
+    position: relative;
+    height: 50vh;
+    overflow: auto;
+    }
+    .table-scroll {
+    display: block;
+    }

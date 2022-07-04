@@ -1,0 +1,24 @@
+<section class="hero-section">
+    <div class="table-scroll scrollbar">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Utilisateur</th>
+          <th scope="col">Bar</th>
+          <th scope="col">Commentaire</th>
+          <th scope="col">Note accordée</th>
+          <th scope="col">Date de mise en ligne</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor= "let uL of avisList">
+          <th scope="row">{{uL.user}}</th>
+          <td>{{uL.bar}}</td>
+          <td>{{uL.description}}</td>
+          <td>{{uL.note}}</td>
+          <td>{{uL.date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </section>
