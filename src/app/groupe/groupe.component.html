@@ -55,18 +55,20 @@
         
     <div class="container">
       <form #groupeUser="ngForm">
+        <div class="card p-4 z-depth-5 shadow-lg p-3 mb-5 bg-white rounded" style="border-radius: 2%;">
         <div class=" md-form"> Nom du groupe :
-          <input type="text" list="cartes" #type name="nomGroupe" ngModel="">
+          <input type="text" list="cartes" #type name="nomGroupe" ngModel="" class="md-form">
                       
           </div>
       <div class=" md-form"> Ajoutez l'utilisateur au groupe :
-      <input type="text" list="cartes" #type name="mailUser" ngModel="">
+      <input type="text" list="cartes" #type name="mailUser" ngModel="" class="md-form">
                   
       </div>
       
     
       <br>
       <button class="btn btn-warning btm-sm btn-bloc "  (click)="addUserToGroup(groupeUser.value)">Ajouter le membre au groupe</button>
+      </div>
     </form>
      
     </div>
@@ -77,4 +79,6 @@
 
       
   </body>
+
+  
 </html>
