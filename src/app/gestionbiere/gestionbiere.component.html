@@ -1,0 +1,30 @@
+<section class="hero-section">
+    <div class="table-scroll scrollbar">
+    
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">idBiere</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Style</th>
+            <th scope="col">Degrès</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let uL of biereList">
+            <th scope="row">{{uL.idBiere}}</th>
+            <td>{{uL.nom}}</td>
+            <td>{{uL.cat.nomCat}}</td>
+            <td>{{uL.style.nom}}</td>
+            <td>{{uL.degre}}</td>
+            <td>
+              <i class="fa fa-edit editStyle" routerLink="/editbiere/{{uL.idBiere}}"></i>
+              <i class="fa fa-times deleteStyle" (click)="DeleteBiere(uL.idBiere)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+    </div>
+    </section>

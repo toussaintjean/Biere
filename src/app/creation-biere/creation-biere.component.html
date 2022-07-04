@@ -1,0 +1,60 @@
+<section class="hero-section">
+    <form style=" padding: 3%; width: fit-content; border-radius: 2%;" #adminForm="ngForm"
+          (ngSubmit)="submit(adminForm)">
+          <div class="title" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> Mise à jour bière ({{beerId}}) </div>
+    
+          <div class="md-form">
+            <label for="name">Nom</label>
+            <br>
+            <input 
+            type="text" 
+            id="nom"
+            [(ngModel)]="beer.nom"
+            name="nom" 
+            #tempName="ngModel"
+            required
+            placeholder="Entrez un nom"
+            class="form-control">
+          </div>
+    
+          <div class="col md-6">
+            <label for="cat">Catégorie</label>
+              <select class="form-control" name="cat" id="cat" required [(ngModel)]="catId.nomCat">
+                <option value="0" selected></option>
+                <option value="{{C.idCat}}" *ngFor="let C of catId"> {{C.nomCat}} </option>
+            </select>
+    
+          </div>
+          <div class="col md-6">
+            <label for="style">Style</label>
+            <select class="form-control" name="style" id="style" required [(ngModel)]="styleId.nom">
+                <option value="0" selected></option>
+                <option value="{{S.idStyle}}" *ngFor="let S of styleId"> {{S.nom}} </option>
+            </select>
+    
+          </div>
+    
+          <div class="md-form">
+            <label for="degree">Degrès</label>
+            <br>
+            <input 
+            name="degree" 
+            id="degree" 
+            type="text" 
+            #tempDegree="ngModel"
+            class="form-control" 
+            [(ngModel)]="beer.degre"
+            placeholder="Entrez un degrès d'alcoolémie">
+          </div>
+          <div class="text-center">
+    
+            <button class="btn btn-warning btm-sm btn-bloc" type=submit>Confirmation</button>
+            <a class="btn btn-light btm-sm btn-bloc" href="/gestionbiere">Retour</a>
+          </div>
+    
+        </form>
+    
+    <p *ngIf="success"> {{messagesuccess}} </p>
+    <p *ngIf="error"> {{messageerror}}</p>
+    
+    </section>

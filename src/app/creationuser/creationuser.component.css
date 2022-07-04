@@ -1,0 +1,12 @@
+.hero-section{
+
+    background-color: whitesmoke;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+form{
+    background-color: whitesmoke;
+    margin: auto;
+    height: fit-content;
+    border: 5mm;
+}
