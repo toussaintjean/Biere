@@ -20,6 +20,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'
 import { DropDownListAllModule
  } from '@syncfusion/ej2-angular-dropdowns';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     BarnavComponent,
     ConnexionbisComponent,
     TestComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

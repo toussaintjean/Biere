@@ -23,44 +23,56 @@
 />
 <link rel="stylesheet" type="text/css" href="inscription.component.css">
 </head>
-    
+
+<nav class="navbar navbar-dark bg-warning">
+
+  <a class="navbar-brand" href="#">
+
+      <img src="/assets/images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="">
+
+      Cheeeers
+
+  </a>
+</nav>
+
 <body>
   <br>
   <br>
-  <h1 class="text-center font-weight">Inscription</h1>
-  <br>
-
-  <div class="alert alert-success" role="alert" *ngIf="message != ''">
-    <p style="text-align:center">{{message}}</p>
-  </div>
-
-  <br>
-  <br>
-  <div class="container">
+ 
+  <div class="container" style="margin-right: auto; margin-top:auto">
+    <h1 class="text-center font-weight"  style="font-weight:bold; color: white; ">Inscription</h1>
+    <br>
+  
+    <div class="alert alert-success" role="alert" *ngIf="message != ''">
+      <p style="text-align:center">{{message}}</p>
+    </div>
+  
+    <br>
+    <br>
     <form style="background-color: white; padding: 3%; width: fit-content; border-radius: 2%;" #user="ngForm"
       (ngSubmit)="inscription(user.value)">
       <div class="md-form">
-        <label for="">Nom</label>
-        <input name="nom" id="Nom" type="text" #nom class="form-control" ngModel="">
+        <label for="" style="color:rgba(161, 91, 10, 0.842);">Nom</label>
+        <input name="nom" id="Nom" type="text" #nom class="form-control " ngModel="">
 
       </div>
 
       <div class="md-form">
-        <label for="">Prenom</label>
+        <label for="" style="color:rgba(161, 91, 10, 0.842);">Prenom</label>
         <input name="prenom" id="Prenom" type="text" #prenom class="form-control" ngModel="">
       </div>
 
       <div class="md-form">
 
-        <label for="">Adresse mail</label>
+        <label for="" style="color:rgba(161, 91, 10, 0.842);">Adresse mail</label>
         <input name="mail" id="Mail" type="text" #mail class="form-control" ngModel="">
       </div>
       <div class="md-form">
-        <label for="">Mot de passe</label>
+        <label for="" style="color:rgba(161, 91, 10, 0.842);">Mot de passe</label>
         <input name="password" id="Mdp" type="text" #password class="form-control" ngModel="">
       </div>
       <div class="text-center">
-        <button class="btn btn-warning btm-sm btn-bloc" type=submit>Confirmation</button>
+        <button class="btn btn-warning btn-md btn-block" type=submit>Confirmation</button>
       </div>
     </form>
   </div>

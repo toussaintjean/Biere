@@ -49,7 +49,7 @@
 
 <app-barnav></app-barnav>
 
-<body class="py-4" style="background-color:whitesmoke;">
+<body class="py-4" style="background-color:white;">
 
   <br>
   <form name="formId">
@@ -105,10 +105,10 @@
 
         <div class="col-sm-4">
           <div style= "margin-top: 5px;"class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
+            <div class="card-body shadow-lg border rounded-3  bg-white rounded">
               <div class="row">
                 <div class="col-auto">
-                  <h5 class="card-title text-uppercase text-muted mb-0" style="text-align: left; font-size: medium;">A la mousse, moussaillon !</h5>
+                  <h5 class="card-title text-uppercase text-muted " style="text-align: left; font-size: medium;">A la mousse, moussaillon !</h5>
                   <br>
                   <span class="h5 font-bold mb-0">{{nbBarsFiltres}} bars filtrés</span>
                 </div>
@@ -124,17 +124,26 @@
       </div>
       <br>
       <br>
-      <div *ngIf="selectFilter==1" class="row mb-4 align-self-center" style="text-align:center ;">
-        <div class="col-2 themed-grid-col">{{nomBierePref}}</div>
-        <div class="col-2 themed-grid-col">{{catPref}}</div>
-        <div class="col-2 themed-grid-col">{{prixPref}}</div>
-        <div class="col-2 themed-grid-col">{{tauxPref}}</div>
+      <div *ngIf="selectFilter==1" >
+      <div class="row ">
+        <div class="col-3 themed-grid-col">Catégorie de bière</div>
+        <div class="col-3 themed-grid-col">Taux d'alcool</div>
+        <div class="col-3 themed-grid-col">Prix préferentiel</div>
+        <div class="col-3 themed-grid-col">Bière préferé</div>
+      </div>
+      <div class="row " style="text-align:center ;">
+        <div class="col-3 themed-grid-col">{{nomBierePref}}</div>
+        <div class="col-3 themed-grid-col">{{catPref}}</div>
+        <div class="col-3 themed-grid-col">{{prixPref}}</div>
+        <div class="col-3 themed-grid-col">{{tauxPref}}</div>
+      </div>
       </div>
     </div>
 
 
   </form>
 
+  <br>
   
   <div style="width:80% ; margin-left:10%">
     <div class="row">
@@ -153,7 +162,7 @@
       <div class="col-sm-6">
         <div  *ngFor = "let marker of markers | paginate: { itemsPerPage: count, currentPage: p }" class="row justify-content-center mb-3">
           <div class="col-md-12 col-xl-10">
-            <div class="card shadow-0 border rounded-3">
+            <div class="card shadow-lg border rounded-3  bg-white rounded">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
@@ -199,5 +208,7 @@
 
 
 </body>
-<footer style="background-color:dimgray ; height: 150px"></footer>
+<footer>
+<img src="../../assets/wave.png" alt="" class="container-fluid" style="height: 250px;">
+</footer>
 </html>
