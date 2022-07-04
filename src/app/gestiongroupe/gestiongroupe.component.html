@@ -1,0 +1,25 @@
+<section class="hero-section">
+    <div class="table-scroll scrollbar">
+    
+    <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">idGroupe</th>
+        <th scope="col">Propriétaire du groupe</th>
+        <th scope="col">Membres</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let uL of groupeList">
+        <th scope="row">{{uL.idGroupe}}</th>
+        <td>{{uL.user}}</td>
+        <td>{{uL.membreGroup}}</td>
+        <td>
+          <i class="fa fa-times deleteStyle" (click)="DeleteGroupe(uL.idGroupe)"></i>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>
+  </div>
+  </section>
