@@ -69,7 +69,8 @@ export class PreferenceComponent implements OnInit {
       this.user.pref=pref;
       this.http.put("http://localhost:8086/preference/update/"+this.loggerService.getUserConnect().pref.idPref,pref).subscribe({
         next: (data) => {console.log(data)},
-        error: (err) => {console.log(err)}
+        error: (err) => {console.log(err)},
+        
         
     })
     
