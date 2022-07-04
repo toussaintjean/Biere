@@ -1,10 +1,13 @@
 .themed-grid-col {
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: rgba(255, 174, 0, 0.15);
+    background-color: rgba(255, 174, 0, 0.753);
     border: 1px solid rgba(255, 217, 0, 0.2);
   }
-
+  .b1{
+    background-image: url("/assets/biere1.jpg");
+    height: 100vh;
+  }
 
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
